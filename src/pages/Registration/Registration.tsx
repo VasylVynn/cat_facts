@@ -48,7 +48,7 @@ const Registration = () => {
             if (localStorageUsers.length)
                 users = [...localStorageUsers, credentials]
             localStorage.setItem("credentials", JSON.stringify(users))
-            routeChange('/');
+            routeChange('/facts');
         } else setErrors(validateInfo(username, password, repeatPassword))
     }
 

@@ -5,6 +5,7 @@ import {State} from "../../redux/facts/factReducer"
 export const fetchFactsRequest = () =>( {
     
         type: FETCH_FACTS_REQUEST
+        
     
 })
 
@@ -27,7 +28,7 @@ export const fetchFactsFailure = (error:string) =>( {
 
 export const fetchFacts = () => {
     return (dispatch:any) =>{
-        dispatch(fetchFactsRequest)
+        dispatch(fetchFactsRequest());
         axios.get('https://catfact.ninja/facts')
             .then(response => {
                 const facts = response.data.data

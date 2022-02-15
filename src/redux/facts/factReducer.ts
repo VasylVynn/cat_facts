@@ -15,13 +15,16 @@ const initialState: State = {
 export const selectFacts = (state:State) => {
     return state.facts
 }
+export const selectLoading = (state:State) => {
+    return state.loading
+}
 
 const factReducer = (state = initialState,action:any) => {
     switch (action.type) {
         case FETCH_FACTS_REQUEST:
             return {
                 ...state,
-                loading: true
+                loading: true,
             }
         case FETCH_FACTS_SUCCESS:
             return {

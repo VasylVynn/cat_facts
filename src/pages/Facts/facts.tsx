@@ -1,8 +1,9 @@
 
 import { connect, useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
-import { fetchFacts, fetchFactsSuccess } from "../../redux/facts/factsActions";
-import { selectFacts, State } from "../../redux/facts/factReducer";
+import { fetchFacts } from "../../redux/facts/factsActions";
+import { selectFacts, selectLoading, State } from "../../redux/facts/factReducer";
+import { Loader } from "./styles";
 
 
 const Facts: React.FC = () => {
@@ -11,15 +12,16 @@ const Facts: React.FC = () => {
 
     const facts = useSelector(selectFacts)
 
+    const loading = useSelector(selectLoading)
+
     useEffect(() => {
         dispatch(fetchFacts())
     }, [])
 
-    console.log(facts);
+    console.log(loading);
 
     return <div>
-        <h2>Facts</h2>
-        <button  >fact</button>
+        {loading ? <Loader ></Loader> : <></>}
     </div>;
 }
 

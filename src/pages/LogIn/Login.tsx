@@ -49,7 +49,7 @@ const Login = () => {
         }
 
         if (userFound) {
-            routeChange('/')
+            routeChange('/facts')
         } else setErrors({ loginError: "Wrong username or password" })
     }
 
