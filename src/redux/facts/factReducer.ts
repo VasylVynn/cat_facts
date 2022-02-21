@@ -51,8 +51,6 @@ const factReducer = (state = initialState,action:any) => {
             }
         case REMOVE_FAV:
             const newFacts = [...state.favFacts].filter((key) => key.fact !== action.payload)
-            console.log(newFacts);
-            console.log(action.payload)
            return{
                ...state,
                favFacts: newFacts
