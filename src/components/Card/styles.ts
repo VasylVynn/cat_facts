@@ -54,6 +54,7 @@ export const FavButton  = styled.button`
   &:disabled{
     opacity: 0.3;
     cursor:default;
+    pointer-events: none;
   }
   
  

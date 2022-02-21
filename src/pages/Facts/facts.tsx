@@ -30,7 +30,6 @@ const Facts: React.FC = () => {
                 <CardText >{facts.fact}</CardText>
                 <FavButton disabled={stringFavFacts.includes(facts.fact)} onClick={() => dispatch(addFavourite(facts))}>Add to favorite</FavButton>
             </Card>
-
         )
     );
 

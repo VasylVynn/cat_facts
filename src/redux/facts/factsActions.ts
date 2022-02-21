@@ -1,6 +1,5 @@
 import { FETCH_FACTS_REQUEST, FETCH_FACTS_SUCCESS, FETCH_FACTS_FAILURE, ADD_FAV, REMOVE_FAV } from "./factsTypes"
 import axios from "axios"
-import {State} from "../../redux/facts/factReducer"
 
 export const fetchFactsRequest = () =>( {
     

@@ -47,7 +47,6 @@ const factReducer = (state = initialState,action:any) => {
         case ADD_FAV:
             return{
                 ...state,
-                
                 favFacts: [...state.favFacts, action.payload] 
             }
         case REMOVE_FAV:
@@ -57,7 +56,6 @@ const factReducer = (state = initialState,action:any) => {
            return{
                ...state,
                favFacts: newFacts
-
            }
 
         default: return state

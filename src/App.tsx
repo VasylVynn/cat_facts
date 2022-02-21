@@ -1,13 +1,15 @@
 import React from 'react';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+import store from './redux/store';
 import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home/Home';
 import Login from './pages/LogIn/Login';
 import Facts from './pages/Facts/facts';
 import FavFacts from './pages/FavFacts/FavFacts'
 import Registration from './pages/Registration/Registration'
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './redux/store';
+
 
 
 
