@@ -1,9 +1,11 @@
 
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
-import { fetchFacts } from "../../redux/facts/factsActions";
-import { selectFacts, selectLoading, State } from "../../redux/facts/factReducer";
-import { Loader } from "./styles";
+
+import { fetchFacts, addFavourite } from "../../redux/facts/factsActions";
+import { selectFacts, selectLoading, selectFavFacts } from "../../redux/facts/factReducer";
+import { Card, CardText, FavButton, Grid } from "../../components/Card/styles";
+import { Loader } from "../../components/Loader/Loader";
 
 
 const Facts: React.FC = () => {
@@ -12,31 +14,29 @@ const Facts: React.FC = () => {
 
     const facts = useSelector(selectFacts)
 
+    const favFacts = useSelector(selectFavFacts);
+
     const loading = useSelector(selectLoading)
+
+    const stringFavFacts = favFacts.map(fact => fact.fact)
 
     useEffect(() => {
         dispatch(fetchFacts())
     }, [])
 
-    console.log(loading);
+    const FactsList = () => (
+        facts.map((facts, index) =>
+            <Card key={index}>
+                <CardText >{facts.fact}</CardText>
+                <FavButton disabled={stringFavFacts.includes(facts.fact)} onClick={() => dispatch(addFavourite(facts))}>Add to favorite</FavButton>
+            </Card>
 
-    return <div>
-        {loading ? <Loader ></Loader> : <></>}
-    </div>;
+        )
+    );
+
+    return <Grid>
+        {loading ? <Loader ></Loader> : FactsList()}
+    </Grid>;
 }
 
-const mapStateToProps = (state: any) => {
-    return {
-        facts: state.facts
-    }
-}
-
-const mapDispatchToProps = (dispatch: any) => {
-    return {
-        fetchFacts: () => dispatch(fetchFacts())
-
-    }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Facts);
+export default Facts;

@@ -3,6 +3,7 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home/Home';
 import Login from './pages/LogIn/Login';
 import Facts from './pages/Facts/facts';
+import FavFacts from './pages/FavFacts/FavFacts'
 import Registration from './pages/Registration/Registration'
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -21,6 +22,7 @@ const App: React.FC = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/facts" element={<Facts />} />
+          <Route path="/fav_facts" element={<FavFacts />} />
         </Routes>
       </Router>
 

@@ -26,6 +26,8 @@ const Navbar = () => {
             <MenuLink to={"/login"} component={Link} >Log in</MenuLink>
             <MenuLink to={"/register"} component={Link}>Register</MenuLink>
             <MenuLink to={"/facts"} component={Link}>Facts</MenuLink>
+            <MenuLink to={"/fav_facts"} component={Link}>My Facts</MenuLink>
+
         </Menu>
     </Nav>;
 }
