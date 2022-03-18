@@ -1,4 +1,4 @@
-import { FETCH_FACTS_REQUEST, FETCH_FACTS_SUCCESS, FETCH_FACTS_FAILURE, ADD_FAV, REMOVE_FAV } from "./factsTypes"
+import { FETCH_FACTS_REQUEST, FETCH_FACTS_SUCCESS, FETCH_FACTS_FAILURE, ADD_FAV, REMOVE_FAV,LOGIN,LOGOUT } from "./factsTypes"
 import axios from "axios"
 
 export const fetchFactsRequest = () =>( {
@@ -31,6 +31,18 @@ export const removeFavourite = (key:string) => ({
     payload: key
 })
 
+
+export const loginSuccess = () =>( {
+    
+    type: LOGIN
+
+})
+
+export const logoutSuccess = () =>( {
+    
+    type: LOGOUT
+
+})
 
 export const fetchFacts = () => {
     return (dispatch:any) =>{

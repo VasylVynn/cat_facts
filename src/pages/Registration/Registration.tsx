@@ -25,6 +25,7 @@ export interface RegistrationErrors {
 const Registration = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [isLoggedIn, setIsLoggedIn] = useState(true)
     const [repeatPassword, setRepeatPassword] = useState('')
 
     const [errors, setErrors] = useState<RegistrationErrors>(
@@ -42,7 +43,7 @@ const Registration = () => {
 
     function Submit() {
         if (password === repeatPassword && username.length > 3) {
-            const credentials = { username, password };
+            const credentials = { username, password, isLoggedIn };
             let users = [credentials];
             const localStorageUsers = localStorage.getItem("credentials") !== null ? JSON.parse(localStorage.getItem("credentials") as string) : [];
             if (localStorageUsers.length)

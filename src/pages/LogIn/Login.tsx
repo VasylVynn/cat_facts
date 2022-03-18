@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "../../redux/facts/factsActions";
 
 
 
 
+
+import { ICred } from '../../interfaces/interfaces';
 import {
     Wrapper,
     InputBox,
@@ -14,14 +18,16 @@ import {
     ErrorMessage
 } from './styles'
 
+export let currentUser = '';
+
 
 const Login = () => {
     const [username, SetUsername] = useState('')
     const [password, SetPassword] = useState('')
-    interface ICred {
-        username: string;
-        password: string;
-    }
+    const dispatch = useDispatch();
+
+
+
 
     interface LoginError {
         loginError?: string;
@@ -43,8 +49,14 @@ const Login = () => {
         let userFound = false;
         if (localStorageUsers.length) {
             localStorageUsers.forEach(user => {
-                if (user.username === username && user.password === password)
+                if (user.username === username && user.password === password && user.isLoggedIn === false) {
                     userFound = true;
+                    currentUser = user.username;
+                    user.isLoggedIn = true;
+                    dispatch(loginSuccess());
+                }
+                if (localStorageUsers.length)
+                    localStorage.setItem("credentials", JSON.stringify(localStorageUsers))
             });
         }
 

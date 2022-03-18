@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
 
+
+
+
 export {
     Nav,
     Logo,
@@ -8,6 +11,8 @@ export {
     MenuLink,
     Menu
 }
+
+
 
 const Nav = styled.div`
     padding: 0 2rem;
@@ -50,8 +55,9 @@ display: none;
 `;
 
 type LinkProps = {
-    to: string;
-    component: any;
+    to?: string;
+    component?: any;
+    isLoggedIn?: boolean;
 }
 const MenuLink = styled(Link) <LinkProps>`
     padding:1rem 2rem;
@@ -62,12 +68,38 @@ const MenuLink = styled(Link) <LinkProps>`
     color: #449c78;
     transition: all 0.3s ease-in-out;
     font-size: 1rem;
+    display: ${({ isLoggedIn }) => (isLoggedIn ? "block" : "none")};
+
     &:hover{
         color: #eeeeee;
         background-color: #1f8145;
         border-radius: 5px;
 
 }
+`;
+type Login = {
+    isLoggedIn: boolean;
+}
+
+
+export const LogoutB = styled.button<Login>`
+ padding:1rem 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: #449c78;
+    transition: all 0.3s ease-in-out;
+    font-size: 1rem;
+    border:0;
+    background-color: transparent;
+    display: ${({ isLoggedIn }) => (isLoggedIn ? "block" : "none")};
+
+    &:hover{
+        color: #eeeeee;
+        background-color: #1f8145;
+        border-radius: 5px;}
+    
 `;
 
 type Props = {
