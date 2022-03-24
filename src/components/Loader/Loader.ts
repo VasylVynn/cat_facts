@@ -28,4 +28,3 @@ export const Loader = styled.div`
     animation-iteration-count: infinite;
     transition-delay: '200ms' ;
 `
-
