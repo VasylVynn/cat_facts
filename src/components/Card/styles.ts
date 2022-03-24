@@ -13,7 +13,6 @@ export const Grid = styled.div`
     }
   `;
 
-
 export const Card = styled.div`
     display: flex;
     flex-direction: column;
@@ -26,16 +25,14 @@ export const Card = styled.div`
     color: #000;
     font-size: 16px;
 `;
+
 export const CardText = styled.div`
     text-align: center;
     font-family: sans-serif;
-  `;
-
-
+`;
 
 export const FavButton  = styled.button`
-    
-    background: linear-gradient(to bottom right, #71ef47, #30b34a);
+  background: linear-gradient(to bottom right, #71ef47, #30b34a);
   border: 0;
   border-radius: 12px;
   color: #FFFFFF;
@@ -56,16 +53,8 @@ export const FavButton  = styled.button`
     cursor:default;
     pointer-events: none;
   }
-  
- 
 
-
-&:hover {
+  &:hover {
     box-shadow: 0px 5px 10px 6px rgba(14,115,11,0.38);}
-  
- 
-
-
-
 `;
 

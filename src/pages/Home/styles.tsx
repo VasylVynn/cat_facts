@@ -7,7 +7,6 @@ const ImageContainer = styled.div`
     justify-content: center;
     margin: 2rem 1rem;
 `
-
 const Image = styled.img`
     display: flex;
     align-self: center;

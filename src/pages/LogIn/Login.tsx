@@ -1,8 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-
-
-
 
 import {
     Wrapper,
@@ -37,7 +34,6 @@ const Login = () => {
         navigate(path);
     }
 
-
     function Login() {
         const localStorageUsers: ICred[] = localStorage.getItem("credentials") !== null ? JSON.parse(localStorage.getItem("credentials") as string) : [];
         let userFound = false;
@@ -47,13 +43,10 @@ const Login = () => {
                     userFound = true;
             });
         }
-
         if (userFound) {
             routeChange('/facts')
         } else setErrors({ loginError: "Wrong username or password" })
     }
-
-
 
     return <Wrapper>
         <H2>Login</H2>
@@ -76,7 +69,5 @@ const Login = () => {
         <LogInBTN onClick={Login} >Log in</LogInBTN>
     </Wrapper>;
 }
-
-
 
 export default Login;

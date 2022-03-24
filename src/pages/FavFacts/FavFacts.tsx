@@ -4,8 +4,8 @@ import React from "react";
 
 import { removeFavourite } from "../../redux/facts/factsActions";
 import { selectFavFacts } from "../../redux/facts/factReducer";
-import { Card, CardText, FavButton, Grid } from "../../components/Card/styles";
-
+import { Grid } from "../../components/Card/styles";
+import { FactCard } from "../../components/Card/FactCard";
 
 const Facts: React.FC = () => {
 
@@ -13,14 +13,9 @@ const Facts: React.FC = () => {
 
     const favFacts = useSelector(selectFavFacts);
 
-
-
     const FavFactsList = () => (
         favFacts.map((favfacts, index) =>
-            <Card key={index}>
-                <CardText >{favfacts.fact}</CardText>
-                <FavButton onClick={() => dispatch(removeFavourite(favfacts.fact))}>Remove</FavButton>
-            </Card>
+            <FactCard key={index} fact={favfacts} onClick={() => dispatch(removeFavourite(favfacts.fact))} buttonText={'Remove'} />
         )
     );
 

@@ -1,10 +1,15 @@
 import { ADD_FAV, FETCH_FACTS_FAILURE, FETCH_FACTS_REQUEST, FETCH_FACTS_SUCCESS, REMOVE_FAV } from "./factsTypes"
 
+export interface Fact {
+    fact: string;
+    length: number;
+  }
+
 export interface State  {
     loading:boolean;
-    facts: Array<{ fact: string, length: number }>;
+    facts: Fact[];
     error:string
-    favFacts: Array<{ fact: string, length: number }>;
+    favFacts: Fact[];
 } 
 
 const initialState: State = {

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const Wrapper = styled.div`
     position: absolute;
   top: 50%;
@@ -19,6 +18,7 @@ export const InputBox = styled.div`
   flex-direction: column;
   min-height: 95px;
 `;
+
 export const Input = styled.input`
  width: 90%;
   padding: 10px;
@@ -33,11 +33,13 @@ export const Input = styled.input`
       border: 1px solid #fff;
     } 
 `;
+
 export const Label = styled.label`
   margin-bottom: 5px;
   font-size: 16px;
   color: #fff;
 `;
+
 export const SubmitBTN = styled.button`
   background-color: #2ea44f;
   border: 1px solid rgba(27, 31, 35, .15);
@@ -59,7 +61,7 @@ export const H2 = styled.h2`
   padding: 0;
   color: #fff;
   text-align: center;
-`
+`;
 
 export const ErrorMessage = styled.p`
 font-size: 14px;
@@ -67,4 +69,4 @@ font-style: italic;
 padding: 0;
 margin:0;
 color: #f44444;
-`
+`;
