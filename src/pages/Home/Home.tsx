@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-
 import { ImageContainer, FactContainer, Image, FactContext } from './styles'
 import cat from '../../images/cat.jpg'
 
@@ -9,8 +8,7 @@ interface Fact {
     length: number
 }
 
-const Home: React.FC = () => {
-
+const Home: React.FC = (replace: any, to: String) => {
 
     const [randomFact, setRandomFact] = useState<Fact>({ fact: "", length: 0 })
 
@@ -29,6 +27,5 @@ const Home: React.FC = () => {
             <FactContext>{randomFact.fact}</FactContext>
         </FactContainer></div>;
 }
-
 
 export default Home;

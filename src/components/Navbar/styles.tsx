@@ -28,7 +28,6 @@ const Logo = styled.a`
     span{
         font-weight: 400;
         font-size: 1.6rem;
-
     }
 
 `;
@@ -47,8 +46,8 @@ display: none;
  @media (max-width: 768px) {
      display: flex;
     }
-`;
 
+`;
 type LinkProps = {
     to: string;
     component: any;
@@ -66,10 +65,8 @@ const MenuLink = styled(Link) <LinkProps>`
         color: #eeeeee;
         background-color: #1f8145;
         border-radius: 5px;
-
 }
 `;
-
 type Props = {
     isOpen: boolean;
 }
@@ -78,7 +75,6 @@ const Menu = styled.div<Props>`
     justify-content: space-between;
     align-items: center;
     position: relative;
-    
     @media (max-width: 768px) {
         overflow: hidden;
         flex-direction: column;
@@ -88,6 +84,5 @@ const Menu = styled.div<Props>`
         background-color: #0be5ec;
         border-radius: 5px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;    }
-
 `;
 

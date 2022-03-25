@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
-
-
 import {
     Wrapper,
     InputBox,
@@ -14,13 +12,10 @@ import {
 } from './styles'
 import validateInfo from './validate';
 
-
 export interface RegistrationErrors {
     usernameError?: string;
     passwordError?: string;
 }
-
-
 
 const Registration = () => {
     const [username, setUsername] = useState('')
@@ -33,12 +28,10 @@ const Registration = () => {
             passwordError: ''
         }
     )
-
     const navigate = useNavigate();
     const routeChange = (path: string) => {
         navigate(path);
     }
-
 
     function Submit() {
         if (password === repeatPassword && username.length > 3) {
@@ -48,10 +41,9 @@ const Registration = () => {
             if (localStorageUsers.length)
                 users = [...localStorageUsers, credentials]
             localStorage.setItem("credentials", JSON.stringify(users))
-            routeChange('/');
+            routeChange('/facts');
         } else setErrors(validateInfo(username, password, repeatPassword))
     }
-
 
     function PasswordChange(event: React.FormEvent<HTMLInputElement>) {
         setPassword(event.currentTarget.value)
@@ -68,9 +60,6 @@ const Registration = () => {
             passwordError: ''
         }))
     }
-
-
-
     return <Wrapper>
         <H2>Registration</H2>
         <InputBox>
@@ -95,10 +84,6 @@ const Registration = () => {
         </InputBox>
         <SubmitBTN onClick={Submit} >Register</SubmitBTN>
     </Wrapper>;
-
-
 }
-
-
 
 export default Registration;

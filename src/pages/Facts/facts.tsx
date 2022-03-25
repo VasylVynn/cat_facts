@@ -1,9 +1,12 @@
 
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
-import { fetchFacts, fetchFactsSuccess } from "../../redux/facts/factsActions";
-import { selectFacts, State } from "../../redux/facts/factReducer";
 
+import { fetchFacts, addFavourite } from "../../redux/facts/factsActions";
+import { selectFacts, selectLoading, selectFavFacts } from "../../redux/facts/factReducer";
+import { Grid } from "../../components/Card/styles";
+import { Loader } from "../../components/Loader/Loader";
+import { FactCard } from "../../components/Card/FactCard";
 
 const Facts: React.FC = () => {
 
@@ -11,30 +14,24 @@ const Facts: React.FC = () => {
 
     const facts = useSelector(selectFacts)
 
+    const favFacts = useSelector(selectFavFacts);
+
+    const loading = useSelector(selectLoading)
+
+    const stringFavFacts: String[] = favFacts.map(fact => fact.fact)
+
     useEffect(() => {
-        dispatch(fetchFacts())
+
+        dispatch(fetchFacts());
+
     }, [])
 
-    console.log(facts);
-
-    return <div>
-        <h2>Facts</h2>
-        <button  >fact</button>
-    </div>;
+    return <Grid>
+        {loading ? <Loader ></Loader> :
+            facts.map((facts, index) =>
+                <FactCard key={index} fact={facts} favButtonDisabled={stringFavFacts.includes(facts.fact)} onClick={() => dispatch(addFavourite(facts))} buttonText={'Add to favourite'} />
+            )}
+    </Grid>;
 }
 
-const mapStateToProps = (state: any) => {
-    return {
-        facts: state.facts
-    }
-}
-
-const mapDispatchToProps = (dispatch: any) => {
-    return {
-        fetchFacts: () => dispatch(fetchFacts())
-
-    }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Facts);
+export default Facts;

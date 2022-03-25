@@ -1,19 +1,32 @@
-import { FETCH_FACTS_FAILURE, FETCH_FACTS_REQUEST, FETCH_FACTS_SUCCESS } from "./factsTypes"
+import { ADD_FAV, FETCH_FACTS_FAILURE, FETCH_FACTS_REQUEST, FETCH_FACTS_SUCCESS, REMOVE_FAV } from "./factsTypes"
+
+export interface Fact {
+    fact: string;
+    length: number;
+  }
 
 export interface State  {
     loading:boolean;
-    facts: {}[];
+    facts: Fact[];
     error:string
+    favFacts: Fact[];
 } 
 
 const initialState: State = {
     loading:false,
     facts: [],
-    error: ''
+    error: '',
+    favFacts: []
 }
 
 export const selectFacts = (state:State) => {
     return state.facts
+}
+export const selectFavFacts = (state:State) => {
+    return state.favFacts
+}
+export const selectLoading = (state:State) => {
+    return state.loading
 }
 
 const factReducer = (state = initialState,action:any) => {
@@ -21,13 +34,14 @@ const factReducer = (state = initialState,action:any) => {
         case FETCH_FACTS_REQUEST:
             return {
                 ...state,
-                loading: true
+                loading: true,
             }
         case FETCH_FACTS_SUCCESS:
             return {
+                ...state,
                 loading: false,
                 facts: action.payload,
-                error: ''
+                error: '',
             }
         case FETCH_FACTS_FAILURE:
             return {
@@ -35,6 +49,18 @@ const factReducer = (state = initialState,action:any) => {
                 facts: [],
                 error: action.payload
             }
+        case ADD_FAV:
+            return{
+                ...state,
+                favFacts: [...state.favFacts, action.payload] 
+            }
+        case REMOVE_FAV:
+            const newFacts = [...state.favFacts].filter((key) => key.fact !== action.payload)
+           return{
+               ...state,
+               favFacts: newFacts
+           }
+
         default: return state
     }
 }
