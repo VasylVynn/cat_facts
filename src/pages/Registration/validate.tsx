@@ -1,4 +1,4 @@
-import { RegistrationErrors } from "./Registration";
+import { RegistrationErrors } from "../../interfaces/interfaces";
 
 export default function validateInfo(username: string, password: string, repeatPassword: string): RegistrationErrors {
     let set = {

@@ -47,14 +47,11 @@ export const FavButton  = styled.button`
   text-align: center;
   text-decoration: none;
   transition: box-shadow .2s ease-in-out;
-
-  &:disabled{
-    opacity: 0.3;
-    cursor:default;
-    pointer-events: none;
-  }
-
-  &:hover {
-    box-shadow: 0px 5px 10px 6px rgba(14,115,11,0.38);}
+    &:disabled{
+      opacity: 0.3;
+      cursor:default;
+      pointer-events: none;
+    }
+    &:hover {
+      box-shadow: 0px 5px 10px 6px rgba(14,115,11,0.38);}
 `;
-

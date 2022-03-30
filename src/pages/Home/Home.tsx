@@ -2,11 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { ImageContainer, FactContainer, Image, FactContext } from './styles'
 import cat from '../../images/cat.jpg'
-
-interface Fact {
-    fact: string,
-    length: number
-}
+import { Fact } from '../../interfaces/interfaces'
 
 const Home: React.FC = (replace: any, to: String) => {
 
