@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    position: absolute;
-  top: 50%;
+  position: absolute;
+  top: 55%;
   left: 50%;
   width: 400px;
   padding: 40px;
@@ -11,6 +11,9 @@ export const Wrapper = styled.div`
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
+  @media (max-width: 768px){
+        width: 90%;
+    }
 `;
 
 export const InputBox = styled.div`
@@ -20,7 +23,7 @@ export const InputBox = styled.div`
 `;
 
 export const Input = styled.input`
- width: 90%;
+  width: 90%;
   padding: 10px;
   border-radius: 5px;
   font-size: 16px;
@@ -56,7 +59,7 @@ export const SubmitBTN = styled.button`
   max-width: 100px;
 `;
 
-export const H2 = styled.h2`
+export const RegistrationTitle = styled.h2`
   margin: 0 0 30px;
   padding: 0;
   color: #fff;

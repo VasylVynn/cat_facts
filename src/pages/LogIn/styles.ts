@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    position: absolute;
+  position: absolute;
   top: 50%;
   left: 50%;
   width: 400px;
@@ -11,6 +11,9 @@ export const Wrapper = styled.div`
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
+  @media (max-width: 768px){
+        width: 90%;
+    }
 `;
 
 export const InputBox = styled.div`
@@ -18,6 +21,7 @@ export const InputBox = styled.div`
   flex-direction: column;
   min-height: 95px;
 `;
+
 export const Input = styled.input`
  width: 90%;
   padding: 10px;
@@ -32,13 +36,14 @@ export const Input = styled.input`
       border: 1px solid #fff;
     } 
 `;
+
 export const Label = styled.label`
   margin-bottom: 5px;
   font-size: 16px;
   color: #fff;
 `;
 
-export const LogInBTN = styled.button`
+export const LogInBTN  = styled.button`
   background-color: #2ea44f;
   border: 1px solid rgba(27, 31, 35, .15);
   border-radius: 6px;
@@ -54,16 +59,17 @@ export const LogInBTN = styled.button`
   max-width: 100px;
 `;
 
-export const H2 = styled.h2`
+export const LoginTitle = styled.h2`
   margin: 0 0 30px;
   padding: 0;
   color: #fff;
   text-align: center;
-`
+`;
+
 export const ErrorMessage = styled.p`
 font-size: 14px;
 font-style: italic;
 padding: 0;
 margin:0;
 color: #f44444;
-`
+`;

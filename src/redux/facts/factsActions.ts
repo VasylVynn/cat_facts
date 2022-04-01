@@ -1,6 +1,7 @@
-import { FETCH_FACTS_REQUEST, FETCH_FACTS_SUCCESS, FETCH_FACTS_FAILURE, ADD_FAV, REMOVE_FAV, BASE_URL } from "./factsTypes"
+import { FETCH_FACTS_REQUEST, FETCH_FACTS_SUCCESS, FETCH_FACTS_FAILURE } from "./factsTypes"
 import axios from "axios"
-import { Fact } from "./factReducer"
+import { BASE_URL } from "./factsTypes"
+import { Fact } from "../../interfaces/interfaces"
 
 export const fetchFactsRequest = () =>( {
     type: FETCH_FACTS_REQUEST
@@ -15,17 +16,6 @@ export const fetchFactsFailure = (error:string) =>( {
     type: FETCH_FACTS_FAILURE,
     payload: error
 })
-
-export const addFavourite = (facts:any) => ({
-    type: ADD_FAV,
-    payload: facts
-})
-
-export const removeFavourite = (key:string) => ({
-    type: REMOVE_FAV,
-    payload: key
-})
-
 
 export const fetchFacts = () => {
     return (dispatch:any) =>{

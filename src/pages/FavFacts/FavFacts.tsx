@@ -1,21 +1,33 @@
+import React, { useEffect, useState } from "react";
 
-import { useDispatch, useSelector } from "react-redux";
-import React from "react";
-
-import { removeFavourite } from "../../redux/facts/factsActions";
-import { selectFavFacts } from "../../redux/facts/factReducer";
 import { Grid } from "../../components/Card/styles";
 import { FactCard } from "../../components/Card/FactCard";
+import { currentUser } from "../../components/Logout/Logout";
+import { Fact } from "../../interfaces/interfaces";
 
 const Facts: React.FC = () => {
+    const [removeClicked, SetRemoveClicked] = useState(false);
 
-    const dispatch = useDispatch();
+    useEffect(() => {
+        if (removeClicked) {
+            SetRemoveClicked(false);
+        }
+    }, [removeClicked])
 
-    const favFacts = useSelector(selectFavFacts);
+    let favFacts: Fact[] = localStorage.getItem(`userFacts-${currentUser}`) !== null ? JSON.parse(localStorage.getItem(`userFacts-${currentUser}`) as string) : [];
+    function fetchFacts() {
+        favFacts = localStorage.getItem(`userFacts-${currentUser}`) !== null ? JSON.parse(localStorage.getItem(`userFacts-${currentUser}`) as string) : [];
+    }
+
+    function RemoveFav(fact: string) {
+        const oldFacts: Fact[] = localStorage.getItem(`userFacts-${currentUser}`) !== null ? JSON.parse(localStorage.getItem(`userFacts-${currentUser}`) as string) : [];
+        const newFacts = oldFacts.filter((key) => key.fact !== fact)
+        localStorage.setItem(`userFacts-${currentUser}`, JSON.stringify(newFacts))
+    }
 
     const FavFactsList = () => (
         favFacts.map((favfacts, index) =>
-            <FactCard key={index} fact={favfacts} onClick={() => dispatch(removeFavourite(favfacts.fact))} buttonText={'Remove'} />
+            <FactCard key={index} fact={favfacts} onClick={() => { RemoveFav(favfacts.fact); SetRemoveClicked(true) }} buttonText={'Remove'} />
         )
     );
 

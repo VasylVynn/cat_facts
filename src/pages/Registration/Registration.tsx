@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
+import { useDispatch } from "react-redux";
 import {
     Wrapper,
     InputBox,
     Input,
     Label,
     SubmitBTN,
-    H2,
-    ErrorMessage
+    ErrorMessage,
+    RegistrationTitle
 } from './styles'
 import validateInfo from './validate';
+import { SetCurrentUser } from '../../components/Logout/Logout';
+import { RegistrationErrors } from '../../interfaces/interfaces';
 
-export interface RegistrationErrors {
-    usernameError?: string;
-    passwordError?: string;
-}
 
 const Registration = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const isLoggedIn: boolean = true;
     const [repeatPassword, setRepeatPassword] = useState('')
 
     const [errors, setErrors] = useState<RegistrationErrors>(
@@ -28,6 +28,8 @@ const Registration = () => {
             passwordError: ''
         }
     )
+
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const routeChange = (path: string) => {
         navigate(path);
@@ -35,12 +37,13 @@ const Registration = () => {
 
     function Submit() {
         if (password === repeatPassword && username.length > 3) {
-            const credentials = { username, password };
+            const credentials = { username, password, isLoggedIn };
             let users = [credentials];
             const localStorageUsers = localStorage.getItem("credentials") !== null ? JSON.parse(localStorage.getItem("credentials") as string) : [];
             if (localStorageUsers.length)
                 users = [...localStorageUsers, credentials]
             localStorage.setItem("credentials", JSON.stringify(users))
+            SetCurrentUser(username);
             routeChange('/facts');
         } else setErrors(validateInfo(username, password, repeatPassword))
     }
@@ -61,7 +64,7 @@ const Registration = () => {
         }))
     }
     return <Wrapper>
-        <H2>Registration</H2>
+        <RegistrationTitle>Registration</RegistrationTitle>
         <InputBox>
             <Label>Username</Label>
             <Input type="text" name="Username" value={username} onChange={function UsernameChange(event) {

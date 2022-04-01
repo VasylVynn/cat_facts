@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
+import catNotFound from '../../images/404image.png'
 import {
-    Wrapper,
     GoBackBTN,
-    H2,
+    ImageContainer,
+    Image,
 } from './styles'
 
 const NotFoundPage = () => {
@@ -11,11 +12,11 @@ const NotFoundPage = () => {
     function GoBack() {
         navigate('/');
     }
-    return <Wrapper>
-        <H2>404 Not Found</H2>
+    return <ImageContainer>
+        <Image src={catNotFound} alt="404 Cat Not found image" ></Image>
         <GoBackBTN onClick={GoBack} >Return to Home page</GoBackBTN>
 
-    </Wrapper>;
+    </ImageContainer>;
 }
 
 export default NotFoundPage;
